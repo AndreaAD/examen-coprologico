@@ -1,6 +1,8 @@
 <?php namespace Jy\ExamenCoprologico;
 
 use Illuminate\Support\ServiceProvider;
+use Jy\ExamenCoprologico\Repo\EloquentExamenCoprologico;
+use Jy\Consulta\Repo\EloquentConsulta;
 
 class ExamenCoprologicoServiceProvider extends ServiceProvider {
 
@@ -28,7 +30,12 @@ class ExamenCoprologicoServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		//
+		$this->app->bind('Jy\ExamenCoprologico\Repo\ExamenCoprologicoInterface', function($app){
+			return new EloquentExamenCoprologico(
+		 		$app,
+		 		$app->make('Jy\Consulta\Repo\ConsultaInterface')
+		 	);
+		});
 	}
 
 	/**
