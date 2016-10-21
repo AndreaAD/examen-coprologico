@@ -43,16 +43,16 @@ class EloquentExamenCoprologico implements ExamenCoprologicoInterface {
 
     public function get($id_consulta)
     {
-        // $model = $this->model(self::MODELO);
-        // return $model->where('id_consulta', '=', $id_consulta)->first();
+        $model = $this->model(self::MODELO);
+        return $model->where('id_consulta', '=', $id_consulta)->first();
     }
 
     public function getLast($consultas)
     {
-        // $model = $this->model(self::MODELO);
-        // return $model->whereIn('id_consulta', $consultas)
-        //             ->orderBy('id', 'desc')
-        //             ->first();
+        $model = $this->model(self::MODELO);
+        return $model->whereIn('id_consulta', $consultas)
+                    ->orderBy('id', 'desc')
+                    ->first();
     }
 
     public function save($anamnesis, $input)

@@ -5,7 +5,7 @@ return [
 	/*CONFIGURACION*/
 
 	//Secciones
-	'seccion_anamnesis' => 'ExamenCoprologico',
+	'seccion_examen_coprologico' => 'ExamenCoprologico',
 	//Modelos
 	'modelo' => 'ExamenCoprologico',
 	'modelo_consulta' => 'Consulta',

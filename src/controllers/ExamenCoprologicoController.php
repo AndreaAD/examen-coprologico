@@ -17,37 +17,37 @@ class ExamenCoprologicoController extends Controller {
 
     public function index()
     {
-        // $consulta_activa = $this->consulta->obtenerConsultaActiva();
-        // if (!is_null($consulta_activa))
-        // {
-        //     $anamnesis = $this->anamnesis->get($consulta_activa->id);
+        $consulta_activa = $this->consulta->obtenerConsultaActiva();
+        if (!is_null($consulta_activa))
+        {
+            $examen_coprologico = $this->examen_coprologico->get($consulta_activa->id);
 
-        //     if (!$anamnesis)
-        //     {
-        //         $paciente = $consulta_activa->paciente;
-        //         $consultas = $paciente->consultas()->lists('id');
-        //         $anamnesis = $this->anamnesis->getLast($consultas);
-        //     }
+            if (!$examen_coprologico)
+            {
+                $paciente = $consulta_activa->paciente;
+                $consultas = $paciente->consultas()->lists('id');
+                $examen_coprologico = $this->examen_coprologico->getLast($consultas);
+            }
 
-        //     $formulario = [
-        //         'empresa' => $consulta_activa->empresa,
-        //         'sede' => $consulta_activa->sede,
-        //         'paciente' => $consulta_activa->paciente,
-        //         'consulta' => $consulta_activa,
-        //         'anamnesis' => $anamnesis,
-        //         'status' => Session::get('status')
-        //     ];
+            $formulario = [
+                'empresa' => $consulta_activa->empresa,
+                'sede' => $consulta_activa->sede,
+                'paciente' => $consulta_activa->paciente,
+                'consulta' => $consulta_activa,
+                'examen_coprologico' => $examen_coprologico,
+                'status' => Session::get('status')
+            ];
 
-        //     $datos = [
-        //         'seccion' => Config::get('anamnesis::seccion_anamnesis'),
-        //         'formulario' => View::make(Config::get('anamnesis::formulario'), $formulario)
-        //     ];
+            $datos = [
+                'seccion' => Config::get('examen-coprologico::seccion_examen_coprologico'),
+                'formulario' => View::make(Config::get('examen-coprologico::formulario'), $formulario)
+            ];
 
-        //     return View::make(Config::get('anamnesis::vista_formulario'), $datos);
-        // } else {
+            return View::make(Config::get('examen-coprologico::vista_formulario'), $datos);
+        } else {
 
-        //     return Redirect::to('error/C01/'.Config::get('anamnesis::seccion_anamnesis'));
-        // }
+            return Redirect::to('error/C01/'.Config::get('examen-coprologico::seccion_examen_coprologico'));
+        }
     }
 
     public function store()
