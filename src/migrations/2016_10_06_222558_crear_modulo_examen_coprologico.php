@@ -5,14 +5,14 @@ use Illuminate\Database\Migrations\Migration;
 
 class CrearModuloExamenCoprologico extends Migration {
 
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
-	public function up()
-	{
-		Schema::create('examen_coprologico', function($table){
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('examen_coprologico', function($table){
             $table->increments('id');
             $table->integer('id_consulta')->unsigned();
             $table->string('color')->nullable();
@@ -55,16 +55,16 @@ class CrearModuloExamenCoprologico extends Migration {
                 ['name' => 'gestionar_examen_coprologico', 'display_name' => 'Examen Coprológico', 'id_modulo' => $id_modulo]
             ]);
         }
-	}
+    }
 
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down()
-	{
-		if (Schema::hasTable('permissions') && Schema::hasTable('modulos'))
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        if (Schema::hasTable('permissions') && Schema::hasTable('modulos'))
         {
             DB::table('permissions')->where('name', '=', 'gestionar_examen_coprologico')->delete();
             DB::table('modulos')->where('nombre', '=', 'Examen Coprológico')->delete();
@@ -72,13 +72,13 @@ class CrearModuloExamenCoprologico extends Migration {
 
         if (Schema::hasTable('consultas'))
         {
-	        Schema::table('examen_coprologico', function(Blueprint $table){
-	            $table->dropForeign('examen_coprologico_id_consulta_foreign');
-	        });
+            Schema::table('examen_coprologico', function(Blueprint $table){
+                $table->dropForeign('examen_coprologico_id_consulta_foreign');
+            });
 
         }
 
         Schema::drop('examen_coprologico');
-	}
+    }
 
 }

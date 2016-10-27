@@ -13,12 +13,12 @@ class ExamenCoprologico extends Ardent {
     
     protected $table = 'examen_coprologico';
     protected $primaryKey = 'id';
-    protected $fillable = ['id_consulta','color','consistecia','flora_bacteriana','almidones','celulas_vegetales','fibra_muscular','jabones','pelos_vegetal','fibra_vegetal','polen','leucocitos','hematies','quistes_de_entamoeba_histolytica','quistes_de_endolimax_nana','quistes_de_entamoeba_coli','quistes_de_iodamoeba_butschlii','blastocystis_hominis','coprologico_otros'];
+    protected $fillable = ['id_consulta','color','consistecia','flora_bacteriana','almidones','celulas_vegetales','fibra_muscular','jabones','pelos_vegetal','fibra_vegetal','polen','leucocitos','hematies','moco','quistes_de_entamoeba_histolytica','quistes_de_endolimax_nana','quistes_de_entamoeba_coli','quistes_de_iodamoeba_butschlii','blastocystis_hominis'];
     protected $activo = false;
 
     public function consulta()
     {
-        return $this->belongsTo(Config::get('examen_coprologico::modelo_consulta'), 'id_consulta');
+        return $this->belongsTo(Config::get('examen-coprologico::modelo_consulta'), 'id_consulta');
     }
 }
 

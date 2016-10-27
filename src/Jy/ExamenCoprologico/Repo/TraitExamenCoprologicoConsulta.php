@@ -6,8 +6,8 @@ use Illuminate\Support\Facades\Config;
 
 trait TraitExamenCoprologicoConsulta {
 	
-    public function examen_coprologico()
+    public function examenCoprologico()
     {
-        return $this->hasOne(Config::get('examen_coprologico::modelo'), 'id_consulta');
+        return $this->hasOne(Config::get('examen-coprologico::modelo'), 'id_consulta');
     }
 }

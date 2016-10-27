@@ -52,60 +52,61 @@ class ExamenCoprologicoController extends Controller {
 
     public function store()
     {
-        // $resultado = $this->anamnesis->store(Input::all());
-        // if ($resultado)
-        // {
-        //     $this->consulta->updateHistoria(Input::get('id_consulta'), Config::get('anamnesis::seccion_anamnesis'));
-        //     return Redirect::to(Config::get('anamnesis::prefijo_ruta'))
-        //                     ->with('status', 'success');
-        // } else {
-        //     return Redirect::to(Config::get('anamnesis::prefijo_ruta'))
-        //                     ->withInput()
-        //                     ->withErrors($this->anamnesis->errors())
-        //                     ->with('status', 'error');
-        // }
+        $resultado = $this->examen_coprologico->store(Input::all());
+        if ($resultado)
+        {
+            $this->consulta->updateHistoria(Input::get('id_consulta'), Config::get('examen-coprologico::seccion_examen_coprologico'));
+            return Redirect::to(Config::get('examen-coprologico::prefijo_ruta'))
+                            ->with('status', 'success');
+        } else {
+            return Redirect::to(Config::get('examen-coprologico::prefijo_ruta'))
+                            ->withInput()
+                            ->withErrors($this->examen_coprologico->errors())
+                            ->with('status', 'error');
+        }
     }
 
     public function update()
     {
-        // $resultado = $this->anamnesis->update(Input::all());
+        $resultado = $this->examen_coprologico->update(Input::all());
         
-        // if($resultado)
-        // {       
-        //     return Redirect::to(Config::get('anamnesis::prefijo_ruta'))
-        //                     ->with('status', 'success');
-        // } else {
-        //     return Redirect::to(Config::get('anamnesis::prefijo_ruta'))
-        //                     ->withInput()
-        //                     ->withErrors( $this->anamnesis->errors() )
-        //                     ->with('status', 'error');
-        // }
+        if($resultado)
+        {       
+            return Redirect::to(Config::get('examen-coprologico::prefijo_ruta'))
+                            ->with('status', 'success');
+        } else {
+            return Redirect::to(Config::get('examen-coprologico::prefijo_ruta'))
+                            ->withInput()
+                            ->withErrors( $this->examen_coprologico->errors() )
+                            ->with('status', 'error');
+        }
     }
 
     public function historialExamenCoprologico()
     {
-        // $historiales = $this->consulta->historiales(Input::get('id_paciente'), Input::get('fecha_i', null), Input::get('fecha_f', null));
-        // $anamnesis = [];
+        $historiales = $this->consulta->historiales(Input::get('id_paciente'), Input::get('fecha_i', null), Input::get('fecha_f', null));
 
-        // foreach ($historiales as $historial) 
-        // {
-        //     if (count($historial->anamnesis))
-        //         array_push($anamnesis, $historial);
-        // }
+        $examen_coprologico = [];
 
-        // return Response::json($anamnesis);
+        foreach ($historiales as $historial) 
+        {
+            if (count($historial->examenCoprologico))
+                array_push($examen_coprologico, $historial);
+        }
+
+        return Response::json($examen_coprologico);
     }
 
     public function getHistorialExamenCoprologico()
     {
-        // $historial = $this->consulta->get(Input::get('id'));
-        // $datos = [
-        //     'historial' => $historial,
-        //     'anamnesis' => $historial->anamnesis
-        // ];
+        $historial = $this->consulta->get(Input::get('id'));
+        $datos = [
+            'historial' => $historial,
+            'examen_coprologico' => $historial->examenCoprologico
+        ];
 
-        // return View::make(Config::get('anamnesis::historial_anamnesis'), $datos)
-        //             ->render();
+        return View::make(Config::get('examen-coprologico::historial_examen_coprologico'), $datos)
+                    ->render();
     }
 
 }

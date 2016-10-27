@@ -22,6 +22,6 @@ return [
 	'vista_lista' => 'app.list',
 
 	//vistas secciones
-	'formulario' => 'packages.jy.examen_coprologico.formulario',
-	'historial_examen_coprologico' => 'packages.jy.examen_coprologico.historial_anamnesis',
+	'formulario' => 'packages.jy.examen-coprologico.formulario',
+	'historial_examen_coprologico' => 'packages.jy.examen-coprologico.historial_examen_coprologico',
 ];
