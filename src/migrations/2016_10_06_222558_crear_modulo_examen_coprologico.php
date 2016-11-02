@@ -48,7 +48,7 @@ class CrearModuloExamenCoprologico extends Migration {
         if (Schema::hasTable('permissions') && Schema::hasTable('modulos'))
         {
             $id_modulo = DB::table('modulos')->insertGetId(
-                ['nombre' => 'Examen Coprológico', 'icono' => 'fa-folder-o', 'descripcion' => 'Paquete para gestionar el examen coprologico de sus pacientes', 'predeterminado' => 0, 'valor'  => 5000]
+                ['nombre' => 'Examen Coprológico', 'icono' => 'fa-folder-o', 'descripcion' => 'Paquete para gestionar el examen coprologico de sus pacientes', 'predeterminado' => 0, 'valor'  =>10000]
             );
 
             DB::table('permissions')->insert([
