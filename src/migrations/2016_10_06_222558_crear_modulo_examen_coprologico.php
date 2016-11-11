@@ -27,6 +27,7 @@ class CrearModuloExamenCoprologico extends Migration {
             $table->string('polen')->nullable();
             $table->string('leucocitos')->nullable();
             $table->string('hematies')->nullable();
+            $table->string('moco')->nullable();
             $table->string('quistes_de_entamoeba_histolytica')->nullable();
             $table->string('quistes_de_endolimax_nana')->nullable();
             $table->string('quistes_de_entamoeba_coli')->nullable();
@@ -48,11 +49,11 @@ class CrearModuloExamenCoprologico extends Migration {
         if (Schema::hasTable('permissions') && Schema::hasTable('modulos'))
         {
             $id_modulo = DB::table('modulos')->insertGetId(
-                ['nombre' => 'Examen Coprológico', 'icono' => 'fa-folder-o', 'descripcion' => 'Paquete para gestionar el examen coprologico de sus pacientes', 'predeterminado' => 0, 'valor'  =>10000]
+                ['nombre' => 'Examen coprológico', 'icono' => 'fa-folder-o', 'descripcion' => 'Paquete para gestionar el examen coprologico de sus pacientes', 'predeterminado' => 0, 'valor'  =>10000]
             );
 
             DB::table('permissions')->insert([
-                ['name' => 'gestionar_examen_coprologico', 'display_name' => 'Examen Coprológico', 'id_modulo' => $id_modulo]
+                ['name' => 'gestionar_examen_coprologico', 'display_name' => 'Examen coprológico', 'id_modulo' => $id_modulo]
             ]);
         }
     }
