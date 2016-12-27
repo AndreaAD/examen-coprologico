@@ -16,7 +16,7 @@ class CrearModuloExamenCoprologico extends Migration {
             $table->increments('id');
             $table->integer('id_consulta')->unsigned();
             $table->string('color')->nullable();
-            $table->string('consistecia')->nullable();
+            $table->string('consistencia')->nullable();
             $table->string('flora_bacteriana')->nullable();
             $table->string('almidones')->nullable();
             $table->string('celulas_vegetales')->nullable();

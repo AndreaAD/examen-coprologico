@@ -59,7 +59,7 @@ class EloquentExamenCoprologico implements ExamenCoprologicoInterface {
     {
         $examen_coprologico->id_consulta = $input['id_consulta'];
         $examen_coprologico->color = $input['color'];
-        $examen_coprologico->consistecia = $input['consistecia'];
+        $examen_coprologico->consistencia = $input['consistencia'];
         $examen_coprologico->flora_bacteriana = $input['flora_bacteriana'];
         $examen_coprologico->almidones = $input['almidones'];
         $examen_coprologico->celulas_vegetales = $input['celulas_vegetales'];
