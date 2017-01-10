@@ -13,8 +13,8 @@ class CrearModuloExamenCoprologico extends Migration {
     public function up()
     {
         Schema::create('examen_coprologico', function($table){
-            $table->increments('id');
-            $table->integer('id_consulta')->unsigned();
+            $table->bigIncrements('id');
+            $table->bigInteger('id_consulta')->unsigned();
             $table->string('color')->nullable();
             $table->string('consistencia')->nullable();
             $table->string('flora_bacteriana')->nullable();
